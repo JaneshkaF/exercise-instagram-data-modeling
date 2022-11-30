@@ -28,6 +28,29 @@ class Address(Base):
 
     def to_dict(self):
         return {}
+        
+class Media(Base):
+    __tablename__ = 'media'
+    id = Column(Integer, primary_key=True)
+    type = Column(enum)
+    url = Column(String(200))
+    post_id = Column(Integer)
+
+class Post(Base):
+    __tablename__ = 'post'
+    user_id = Column(Integer)
+
+class Comment(Base):
+    __tablename__ = 'comment'
+    user_id = Column(Integer)
+    comment_text = Column(String(250))
+    author_id = Column(Integer)
+    post_id = Column(Integer)
+
+class Follower(Base):
+    __tablename__ = 'follower'
+    user_from_id = Column(Integer)
+    user_to_id = Column(Integer)
 
 ## Draw from SQLAlchemy base
 try:
